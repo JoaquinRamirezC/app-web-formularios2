@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -15,32 +15,34 @@
         Cálculo de Promedio - Cibertec
     </div>
     <div class="card-body">
-        <form>
+        <form th:action="@{/promedionotas}" method="post"
+              th:object="${promediomodel}">
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="txtcl1" placeholder="name@example.com">
+                <input type="number" class="form-control" id="txtcl1" placeholder="name@example.com"
+                       th:field="*{cl1}">
                 <label for="txtcl1">Ingrese nota del CL1</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="txtcl2" placeholder="name@example.com">
+                <input type="number" class="form-control" id="txtcl2" placeholder="name@example.com"
+                       th:field="*{cl2}">
                 <label for="txtcl2">Ingrese nota del CL2</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="txtcl3" placeholder="name@example.com">
+                <input type="number" class="form-control" id="txtcl3" placeholder="name@example.com"
+                       th:field="*{cl3}">
                 <label for="txtcl3">Ingrese nota del CL3</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="txtprofin" placeholder="name@example.com">
+                <input type="number" class="form-control" id="txtprofin" placeholder="name@example.com"
+                       th:field="*{profin}">
                 <label for="txtprofin">Ingrese nota del Proyecto Final</label>
             </div>
             <button class="btn btn-primary" type="submit">Calcular</button>
            <hr/>
-            <div class="alert alert-dark" role="alert">
-                A simple dark alert—check it out!
+            <div th:if="${verresultado}" class="alert alert-dark" role="alert">
+                <span th:text="${resultado} ?: ''"></span>
             </div>
         </form>
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
 
 </div>
